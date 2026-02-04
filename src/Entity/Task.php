@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Enum\TaskStatus;
 use App\Repository\TaskRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Clock\DatePoint;
 
@@ -68,9 +69,15 @@ class Task
         return $this->date;
     }
 
-    public function setDate(DatePoint $date): static
+    public function setDate(?DateTimeInterface $date): static
     {
-        $this->date = $date;
+        if ($date === null) {
+            $this->date = null;
+
+            return $this;
+        }
+
+        $this->date = $date instanceof DatePoint ? $date : new DatePoint($date->format('Y-m-d'));
 
         return $this;
     }
