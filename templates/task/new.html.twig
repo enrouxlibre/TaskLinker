@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une tâche - TaskLinker{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('js/select.js') }}"></script>
+{% endblock %}
+
+{% block header_title %}
+    <h1>Créer une tâche</h1>
+{% endblock %}
+
+{% block body %}
+            <div id="content">
+                {{ form_start(form, {'attr': {'name': 'tache'}}) }}
+                    <div>
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                    <div class="flex-form">
+                        <div>
+                            {{ form_label(form.date) }}
+                            {{ form_widget(form.date) }}
+                            {{ form_errors(form.date) }}
+                        </div>
+                        <div>
+                            {{ form_label(form.status) }}
+                            {{ form_widget(form.status) }}
+                            {{ form_errors(form.status) }}
+                        </div>
+                    </div>
+                    <div>
+                        {{ form_label(form.membre) }}
+                        {{ form_widget(form.membre) }}
+                        {{ form_errors(form.membre) }}
+                    </div>
+                    <br>
+                    <button class="button button-submit">Ajouter</button>
+                {{ form_end(form) }}
+            </div>
+
+{% endblock %}

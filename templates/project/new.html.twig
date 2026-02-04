@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau projet - TaskLinker{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('js/select.js') }}"></script>
+{% endblock %}
+
+{% block header_title %}
+    <h1>Nouveau projet</h1>
+{% endblock %}
+
+{% block body %}
+            <div id="content">
+                {{ form_start(form, {'attr': {'name': 'projet'}}) }}
+                    <div>
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.membres) }}
+                        {{ form_widget(form.membres) }}
+                        {{ form_errors(form.membres) }}
+                    </div>
+                    <br>
+                    <button class="button button-submit">Continuer</button>
+                {{ form_end(form) }}
+            </div>
+
+{% endblock %}
