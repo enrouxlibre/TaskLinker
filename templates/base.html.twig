@@ -20,31 +20,9 @@
     <body>
     
     <div id="main-container">
-        <nav>
-            <a href="{{ path('project_index') }}" id="logo">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo TaskLinker">
-            </a>
-            <ul id="main-menu">
-                {% set currentRoute = app.request.attributes.get('_route') %}
-                <li class="{{ currentRoute starts with 'project_' or currentRoute starts with 'task_' ? 'active' : '' }}">
-                    <a href="{{ path('project_index') }}">
-                        <i class="fa-solid fa-list-check"></i> Projets
-                    </a>
-                </li>
-                <li class="{{ currentRoute starts with 'user_' ? 'active' : '' }}">
-                    <a href="{{ path('user_index') }}">
-                        <i class="fa-regular fa-user"></i> Équipe
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        {% include 'partials/nav.html.twig' %}
         <main>
-            <header>
-                <div id="current-user"></div>
-                <div id="title-page">
-                    {% block header_title %}{% endblock %}
-                </div>
-            </header>
+            {% include 'partials/header.html.twig' with { header_title: block('header_title') } %}
         {% block body %}{% endblock %}
         </main>
     </div>
