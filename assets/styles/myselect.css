@@ -48,6 +48,8 @@
     width: anchor-size(width);
     box-sizing: border-box;
     gap: 0 10px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .infobox label,
